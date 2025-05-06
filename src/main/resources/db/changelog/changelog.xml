@@ -1,0 +1,77 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
+
+    <changeSet id="001-create-orderbook-table" author="Duy">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="orderbook"/>
+            </not>
+        </preConditions>
+        <sqlFile path="db/changelog/001-create-orderbook-table.sql"/>
+        <rollback>
+            <sqlFile path="db/changelog/001-drop-orderbook-table.sql"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="002-create-ordertransaction-table" author="yourname" runOnChange="true">
+
+        <sqlFile path="db/changelog/002-create-ordertransaction-table.sql"/>
+        <rollback>
+            <sqlFile path="db/changelog/002-drop-ordertransaction-table.sql"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="003-update-tables" author="Chien">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="orderbook"/>
+            <tableExists tableName="ordertransaction"/>
+            <not>
+                <columnExists tableName="orderbook" columnName="created_at"/>
+            </not>
+            <not>
+                <columnExists tableName="orderbook" columnName="updated_at"/>
+            </not>
+        </preConditions>
+        <sqlFile path="db/changelog/003-update-tables.sql"/>
+        <rollback>
+            <sqlFile path="db/changelog/003-rollback-update-tables.sql"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="004a-create-user-table" author="Chien">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="users"/>
+            </not>
+        </preConditions>
+        <sqlFile path="db/changelog/004a-create-user-table.sql"/>
+        <rollback>
+            <sqlFile path="db/changelog/004a-drop-user-table.sql"/>
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>
+
+
+    <databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="001-create-user-table" author="yourname">
+        <sqlFile path="db/changelog/001-create-user-table.sql"/>
+    </changeSet>
+
+    <changeSet id="002-add-email-column" author="yourname">
+        <sqlFile path="db/changelog/002-add-email-column.sql"/>
+    </changeSet>
+
+    </databaseChangeLog>
+
+
+
+

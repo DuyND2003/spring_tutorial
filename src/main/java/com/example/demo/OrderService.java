@@ -28,7 +28,6 @@ public class OrderService {
     public List<OrderBook> getBuys() { return orderRepo.findBySide("BUY"); }
     public List<OrderBook> getSells() { return orderRepo.findBySide("SELL"); }
     public List<OrderBook> getBestBid() { return orderRepo.bestBid(PageRequest.of(0, 1)); }
-    public List<OrderTransaction> getTxByOrder(Long id) { return txRepo.findByOrder_Id(id); }
 
     public void matchOrders() {
         // Bước 1: Lấy toàn bộ lệnh mua và lệnh bán từ database

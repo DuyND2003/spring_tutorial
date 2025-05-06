@@ -27,11 +27,6 @@ public class OrderController {
     public List<OrderBook> sells()   { return service.getSells(); }
     @GetMapping("/orders/best-bid")
     public List<OrderBook> bid()     { return service.getBestBid(); }
-    @GetMapping("/orders/{id}/tx")
-    public List<OrderTransaction> tx(@PathVariable Long id){
-        return service.getTxByOrder(id);
-    }
-
     @GetMapping("orders/match")
     public String matchOrders(){
         service.matchOrders();
