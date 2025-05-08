@@ -8,7 +8,7 @@ group = "com.example"
 version = "0.0.1-SNAPSHOT"
 
 java {
-	toolchain { languageVersion.set(JavaLanguageVersion.of(17)) }
+	toolchain { languageVersion.set(JavaLanguageVersion.of(21)) }
 }
 
 repositories {
@@ -23,7 +23,8 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
 	implementation("org.springframework.kafka:spring-kafka")
 	implementation("org.apache.commons:commons-lang3:3.17.0")
-
+// https://mvnrepository.com/artifact/com.google.guava/guava
+	implementation("com.google.guava:guava:33.4.8-jre")
 	implementation("org.liquibase:liquibase-core:4.31.1")
 	/* Test */
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
