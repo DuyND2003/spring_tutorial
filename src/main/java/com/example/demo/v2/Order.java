@@ -2,6 +2,8 @@ package com.example.demo.v2;
 
 public class Order {
 
+    private int id ;
+
     private long timestamp;
 
     private boolean side; // true is sell, false is buy
@@ -48,6 +50,14 @@ public class Order {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override

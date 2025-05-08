@@ -7,7 +7,9 @@ import java.util.List;
 public interface MatchingEngine {
 
 
-    void processBuyOrder(Order buyOrder, ImmutableSortedSet<Order> askOrders);
+    void processBuyOrder(Order buyOrder, ImmutableSortedSet<Order> askOrder);
+
+    List<Order> getMatchOrders(Order buyOrder, ImmutableSortedSet<Order> askOrders);
 
     void processSellOrder(Order sellOrder, ImmutableSortedSet<Order> bidOrders);
 
